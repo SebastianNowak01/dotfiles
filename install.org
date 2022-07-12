@@ -63,41 +63,41 @@ These name are needed in some of my config files.
 ** Packages needed for my dotfiles to work
 This is a list of packages from official Arch Linux repository needed for my dotfiles to work:
 
--rofi
+-alacritty (terminal)
 
--fish
+-brightnessctl (a tool to manage backlight)
 
--alacritty
+-exa (ls replacement)
 
--i3-gaps
+-fish (commandline shell)
 
--picom
+-flameshot (GUI screenshot utility)
 
--polybar
+-i3-gaps (window manager)
 
--neovim
+-mpv (media player)
 
--nitrogen
+-neovim (vim replacement)
 
--exa
+-network-manager-applet (network applet for polybar)
 
--network-manager-applet
+-nitrogen (GUI desktop background server and setter for X Window)
 
--flameshot
+-pacman-contrib (scripts and tools for pacman systems)
 
--mpv
+-picom (compositor)
 
--pulseaudio
+-polybar (status bar)
 
--brightnessctl
+-pulseaudio (general studio sound server)
 
--flameshot
+-rofi (window switcher, run dialog, ssh-launcher and dmenu replacement)
 
--ttf-font-awesome
+-ttf-font-awesome (fonts used in my dotfiles)
 
 The command below is written for convenience to download needed packages and must be run with *root privileges*:
 #+BEGIN_EXAMPLE
-pacman -S rofi fish alacritty i3-gaps picom polybar neovim nitrogen exa network-manager-applet mpv pulseaudio brigthnessctl flameshot ttf-font-awesome
+pacman -S alacritty brigthnessctl exa fish flameshot i3-gaps mpv neovim network-manager-applet nitrogen pacman-contrib picom polybar pulseaudio rofi ttf-font-awesome
 #+END_EXAMPLE
 
 * Changes not included in dotfiles
