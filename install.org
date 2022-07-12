@@ -34,11 +34,12 @@ My dotfiles can be found here:
 https://gitlab.com/sebnow91/dotfiles
 
 ** Getting device names for config
-To get touchpad name you can simply run /xinput/ command. To get your wifi and ethernet device names you can use /ip link/ command.
+To get touchpad name you can simply run *xinput* command. To get your wifi and ethernet device names you can use *ip link* command.
 These name are needed in some of my config files.
 
 ** Packages needed for my dotfiles to work
 This is a list of packages from official Arch Linux repository needed for my dotfiles to work:
+
 -rofi
 
 -fish
@@ -95,6 +96,7 @@ blacklist pcspkr
 
 ** Making boot silent
 This line should be added to the end of the /etc/default/grub file to hide all the logs when loading to OS.
+This method works if you use GRUB as your bootloader.
 #+BEGIN_EXAMPLE
 GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=3"
 #+END_EXAMPLE
@@ -114,12 +116,12 @@ Theme installation is explained by the author of the theme.
 ** Dualboot
 If you have a dualboot system then you have to add EFI partitions of your other operation systems and write them to /etc/fstab. To know what partition
 to add to your fstab file run *blkid* command with *root privileges*. Partition has to be mounted in order for this to work. You should know how to mount
-a partition after watching DT(DistroTube)'s Arch Linux Installation Guide. Example fstab entry for a EFI partition looks like this:
+a partition after watching DT(DistroTube)'s Arch Linux Installation Guide. Example fstab entry for an EFI partition looks like this:
 #+BEGIN_EXAMPLE
 UUID=*EFI partition UUID*  /mnt    vfat    defaults        0 0
 #+END_EXAMPLE
 *ALERT!* You have to mount to the location as you have written in the /etc/fstab file.
-Lastly, you have to make your GRUB config again, same as in /Making boot silent/ section.
+Lastly, you have to make your GRUB config again, same as in * Making boot silent section.
 
 ** Set X11 keyboard layout
 To set X11 keyboard layout you can use *localectl* to check what is your keyboard layout and then set it with:
