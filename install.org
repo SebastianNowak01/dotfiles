@@ -1,6 +1,24 @@
 #+title: ACER NITRO AN515-55 Laptop Arch Linux configuration
 #+author: sebnow91
 
+:TOC:
+- [[#introduction][Introduction]]
+- [[#laptops-hardware][Laptop's hardware]]
+- [[#installation-process][Installation process]]
+- [[#basic-packages-and-dotfiles][Basic packages and dotfiles]]
+  - [[#doom-emacs][DOOM Emacs]]
+  - [[#dotfiles][Dotfiles]]
+  - [[#getting-device-names-for-config][Getting device names for config]]
+  - [[#packages-needed-for-my-dotfiles-to-work][Packages needed for my dotfiles to work]]
+- [[#changes-not-included-in-dotfiles][Changes not included in dotfiles]]
+  - [[#turning-off-pcspeaker][Turning off PCspeaker]]
+  - [[#making-boot-silent][Making boot silent]]
+  - [[#tlp][TLP]]
+  - [[#grub-theme][GRUB Theme]]
+  - [[#dualboot][Dualboot]]
+  - [[#set-x11-keyboard-layout][Set X11 keyboard layout]]
+- [[#doom-emacs-config][DOOM Emacs config]]
+
 * Introduction
 In my dotfiles I implemented this general Arch Linux installation guide in case I have to install it again in the future.
 There are tutorials I used to install the OS I currently use. This guide helps with not only how to make Arch Linux working with dotfiles
