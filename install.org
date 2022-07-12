@@ -29,7 +29,7 @@ systemctl start --user emacs
 For more info you can visit:
 https://www.emacswiki.org/emacs/EmacsAsDaemon
 
-** dotfiles
+** Dotfiles
 My dotfiles can be found here:
 https://gitlab.com/sebnow91/dotfiles
 
@@ -40,20 +40,35 @@ These name are needed in some of my config files.
 ** Packages needed for my dotfiles to work
 This is a list of packages from official Arch Linux repository needed for my dotfiles to work:
 -rofi
+
 -fish
+
 -alacritty
+
 -i3-gaps
+
 -picom
+
 -polybar
+
 -neovim
+
 -nitrogen
+
 -exa
+
 -network-manager-applet
+
 -flameshot
+
 -mpv
+
 -pulseaudio
+
 -brightnessctl
+
 -flameshot
+
 -ttf-font-awesome
 
 The command below is written for convenience to download needed packages and must be run with *root privileges*:
@@ -62,6 +77,7 @@ pacman -S rofi fish alacritty i3-gaps picom polybar neovim nitrogen exa network-
 #+END_EXAMPLE
 
 * Changes not included in dotfiles
+
 *DISCLAIMER!!!* Most actions performed below were checked and mostly done with the help of ArchWiki:
 https://wiki.archlinux.org/
 
@@ -78,10 +94,10 @@ blacklist pcspkr
 #+END_EXAMPLE
 
 ** Making boot silent
+This line should be added to the end of the /etc/default/grub file to hide all the logs when loading to OS.
 #+BEGIN_EXAMPLE
 GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=3"
 #+END_EXAMPLE
-This line should be added to the end of the /etc/default/grub file to hide all the logs when loading to OS.
 After the change you have to update the grub config with the command
 #+BEGIN_EXAMPLE
 grub-mkconfig -o /boot/grub/grub.cfg
@@ -104,6 +120,12 @@ UUID=*EFI partition UUID*  /mnt    vfat    defaults        0 0
 #+END_EXAMPLE
 *ALERT!* You have to mount to the location as you have written in the /etc/fstab file.
 Lastly, you have to make your GRUB config again, same as in /Making boot silent/ section.
+
+** Set X11 keyboard layout
+To set X11 keyboard layout you can use *localectl* to check what is your keyboard layout and then set it with:
+#+BEGIN_EXAMPLE
+localectl set-x11-keymap pl
+#+END_EXAMPLE
 
 * DOOM Emacs config
 These commands should be pasted into ~/.doom.d/config.el. They help me configure DOOM Emacs to my liking:
