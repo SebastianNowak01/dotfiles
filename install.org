@@ -1,0 +1,114 @@
+#+title: ACER NITRO AN515-55 Laptop Arch Linux configuration
+#+author: sebnow91
+
+
+* Laptop's hardware
+
+| GPU (hybrid) | CPU       | RAM       | SSD                 | Monitor                       |
+|--------------+-----------+-----------+---------------------+-------------------------------|
+| GTX1650+iGPU | i5-10300H | 16GB DDR4 | 256GB M.2 PCIe NVMe | built-in 144Hz fullHD monitor |
+
+* Installation process
+To install Arch Linux you can simply follow DistroTube's Arch Linux Installation Guide (for UEFI systems):
+[[https://www.youtube.com/watch?v=PQgyW10xD8s&t=1675s]]
+
+* Basic packages and dotfiles
+Some basic packages will be downloaded if you follow aforementioned Arch Linux Install Guide and another DT's
+tutorial for installing graphical environment:
+[[https://www.youtube.com/watch?v=pouX5VvX0_Q&t=1139s]]
+
+** DOOM Emacs
+*IMPORTANT!* It is recommended to install DOOM Emacs before copying dotfiles below to ~/.config, because there is a path to DOOM Emacs
+that breaks fish if Emacs, and subseqently DOOM Emacs is not installed. To install DOOM Emacs I used DistroTube's tutorial:
+https://www.youtube.com/watch?v=37H7bD-G7nE&t=641s
+You can also enable emacs daemon with systemd:
+#+BEGIN_EXAMPLE
+systemctl enable --user emacs
+systemctl start --user emacs
+#+END_EXAMPLE
+For more info you can visit:
+https://www.emacswiki.org/emacs/EmacsAsDaemon
+
+** dotfiles
+My dotfiles can be found here:
+https://gitlab.com/sebnow91/dotfiles
+
+** Getting device names for config
+To get touchpad name you can simply run /xinput/ command. To get your wifi and ethernet device names you can use /ip link/ command.
+These name are needed in some of my config files.
+
+** Packages needed for my dotfiles to work
+This is a list of packages from official Arch Linux repository needed for my dotfiles to work:
+-rofi
+-fish
+-alacritty
+-i3-gaps
+-picom
+-polybar
+-neovim
+-nitrogen
+-exa
+-network-manager-applet
+-flameshot
+-mpv
+-pulseaudio
+-brightnessctl
+-flameshot
+-ttf-font-awesome
+
+The command below is written for convenience to download needed packages and must be run with *root privileges*:
+#+BEGIN_EXAMPLE
+pacman -S rofi fish alacritty i3-gaps picom polybar neovim nitrogen exa network-manager-applet mpv pulseaudio brigthnessctl flameshot ttf-font-awesome
+#+END_EXAMPLE
+
+* Changes not included in dotfiles
+*DISCLAIMER!!!* Most actions performed below were checked and mostly done with the help of ArchWiki:
+https://wiki.archlinux.org/
+
+** Turning off PCspeaker
+I globally disabled PCspeaker by unloading pcspkr kernel module:
+#+BEGIN_EXAMPLE
+# rmmod pcspkr
+#+END_EXAMPLE
+And then blacklisting the *pcspkr* module:
+#+BEGIN_EXAMPLE
+/etc/modprobe.d/nobeep.conf
+
+blacklist pcspkr
+#+END_EXAMPLE
+
+** Making boot silent
+#+BEGIN_EXAMPLE
+GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=3"
+#+END_EXAMPLE
+This line should be added to the end of the /etc/default/grub file to hide all the logs when loading to OS.
+After the change you have to update the grub config with the command
+#+BEGIN_EXAMPLE
+grub-mkconfig -o /boot/grub/grub.cfg
+#+END_EXAMPLE
+
+** TLP
+As a laptop user you can download TLP package to better manage battery life.
+
+** GRUB Theme
+To have a nice looking GRUB menu you can download one of many GRUB themes available online. I use Grub-theme-stylish made by vinceliuice:
+https://www.gnome-look.org/p/1009237
+Theme installation is explained by the author of the theme.
+
+** Dualboot
+If you have a dualboot system then you have to add EFI partitions of your other operation systems and write them to /etc/fstab. To know what partition
+to add to your fstab file run *blkid* command with *root privileges*. Partition has to be mounted in order for this to work. You should know how to mount
+a partition after watching DT(DistroTube)'s Arch Linux Installation Guide. Example fstab entry for a EFI partition looks like this:
+#+BEGIN_EXAMPLE
+UUID=*EFI partition UUID*  /mnt    vfat    defaults        0 0
+#+END_EXAMPLE
+*ALERT!* You have to mount to the location as you have written in the /etc/fstab file.
+Lastly, you have to make your GRUB config again, same as in /Making boot silent/ section.
+
+* DOOM Emacs config
+These commands should be pasted into ~/.doom.d/config.el. They help me configure DOOM Emacs to my liking:
+#+BEGIN_SRC elisp
+(beacon-mode 1) ;requires (!package beacon) in ~/.doom.d/packages.el ;enables beacon
+(set-face-attribute 'default nil :height 140) ;allows to change font size :height takes argument as pixels/10, so this is 14px font-size
+(define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop) ;with this I do not have to click tab twice to indent text
+#+END_SRC
