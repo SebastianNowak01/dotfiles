@@ -1,6 +1,11 @@
 #+title: ACER NITRO AN515-55 Laptop Arch Linux configuration
 #+author: sebnow91
 
+* Introduction
+In my dotfiles I implemented this general Arch Linux installation guide in case I have to install it again in the future.
+There are tutorials I used to install the OS I currently use. This guide helps with not only how to make Arch Linux working with dotfiles
+included below but also helps with things that help using this OS easier i.e. X11 keyboard layout, turning off PCSpeaker, how to mount an EFI partition
+for os-prober to dualboot or making boot silent.
 
 * Laptop's hardware
 
