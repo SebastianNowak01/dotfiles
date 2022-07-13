@@ -97,7 +97,7 @@ This is a list of packages from official Arch Linux repository needed for my dot
 
 The command below is written for convenience to download needed packages and must be run with *root privileges*:
 #+BEGIN_EXAMPLE
-pacman -S alacritty brigthnessctl exa fish flameshot i3-gaps mpv neovim network-manager-applet nitrogen pacman-contrib picom polybar pulseaudio rofi ttf-font-awesome
+pacman -S alacritty brightnessctl exa fish flameshot i3-gaps mpv neovim network-manager-applet nitrogen pacman-contrib picom polybar pulseaudio rofi ttf-font-awesome
 #+END_EXAMPLE
 
 * Changes not included in dotfiles
