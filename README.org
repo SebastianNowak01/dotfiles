@@ -134,7 +134,10 @@ As a laptop user you can download TLP package to better manage battery life.
 ** GRUB Theme
 To have a nice looking GRUB menu you can download one of many GRUB themes available online. I use Grub-theme-stylish made by vinceliuice:
 https://www.gnome-look.org/p/1009237
-Theme installation is explained by the author of the theme.
+
+Theme installation is explained by the author of the theme. To unpack tar files I used this tutorial:
+
+https://linuxize.com/post/how-to-extract-unzip-tar-xz-file/
 
 ** Dualboot
 If you have a dualboot system then you have to add EFI partitions of your other operation systems and write them to /etc/fstab. To know what partition
