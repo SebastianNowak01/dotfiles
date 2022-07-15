@@ -129,14 +129,13 @@ grub-mkconfig -o /boot/grub/grub.cfg
 #+END_EXAMPLE
 
 ** TLP
-As a laptop user you can download TLP package to better manage battery life.
+As a laptop user you can download TLP package to better manage battery life. This service has to be enabled and started to work.
 
 ** GRUB Theme
 To have a nice looking GRUB menu you can download one of many GRUB themes available online. I use Grub-theme-stylish made by vinceliuice:
 https://www.gnome-look.org/p/1009237
 
 Theme installation is explained by the author of the theme. To unpack tar files I used this tutorial:
-
 https://linuxize.com/post/how-to-extract-unzip-tar-xz-file/
 
 ** Dualboot
@@ -147,12 +146,64 @@ a partition after watching DT(DistroTube)'s Arch Linux Installation Guide. Examp
 UUID=*EFI partition UUID*  /mnt    vfat    defaults        0 0
 #+END_EXAMPLE
 *ALERT!* You have to mount to the location as you have written in the /etc/fstab file.
-Lastly, you have to make your GRUB config again, same as in * Making boot silent section.
+Lastly, you have to make your GRUB config again, same as in *Making boot silent* section.
 
 ** Set X11 keyboard layout
 To set X11 keyboard layout you can use *localectl* to check what is your keyboard layout and then set it with:
 #+BEGIN_EXAMPLE
 localectl set-x11-keymap pl
+#+END_EXAMPLE
+
+** Hardware acceleration and setting up two graphics cards
+To enable hardware acceleration you need to have video drivers installed. For this laptop the needed video drivers are: xf86-video-intel and nvidia.
+To enable hardware aceeleration in firefox (my default browser) I followed this guide:
+https://www.youtube.com/watch?v=tpy9yws-J2I&t=463s
+To set up NVIDIA Optimus I used this guide:
+https://www.youtube.com/watch?v=jncc3QL8RWI
+Some steps were unclear in the documentation so they are explained below.
+
+*** Xinit optimus-manager configuration
+I use xorg-xinit to start my X session, so to make optimus-manager working I found this guide:
+https://dev.to/snikhill/optimus-manager-on-arch-linux-1589
+You simply add lines below before any graphical environment related commands (compositor, window manager):
+#+BEGIN_SRC bash
+if [[[[ -f /usr/bin/prime-offload ]]]]; then
+    /usr/bin/prime-offload
+fi
+#+END_SRC
+Then, after your graphical environment command you add these lines:
+#+BEGIN_SRC bash
+if [[ -f /usr/bin/prime-switch ]]; then
+    sudo /usr/bin/prime-switch
+fi
+#+END_SRC
+
+*** User configuration file
+Optimus-manager config file has to be created in /etc/optimus-manager and named as optimus-manager.conf. My whole config for this laptop looks like this:
+#+BEGIN_EXAMPLE
+[nvidia]
+dynamic_power_management=fine
+#+END_EXAMPLE
+It is *Configuration 1* mentioned in this offical optimus-manager guide:
+https://github.com/Askannz/optimus-manager/wiki/A-guide--to-power-management-options
+
+*** Runtime D3 status: Disabled by default
+From this guide:
+https://download.nvidia.com/XFree86/Linux-x86_64/435.17/README/dynamicpowermanagement.html
+In the section *Automated Setup* I followed the 2. point there. I added *options nvidia "NV_regDynamicPowerManagement=0x02"*
+in /etc/modprobe.d/nvidia.conf file (this file had to be created). After rebooting and calling *cat /proc/driver/nvidia/gpus/0000:01:00.0/power*
+that was the result:
+#+BEGIN_EXAMPLE
+Runtime D3 status:          Enabled (fine-grained)
+Video Memory:               Off
+
+GPU Hardware Support:
+ Video Memory Self Refresh: Supported
+ Video Memory Off:          Supported
+
+Power Limits:
+ Default:                   N/A milliwatts
+ GPU Boost:                 N/A milliwatts
 #+END_EXAMPLE
 
 * DOOM Emacs config
