@@ -1,11 +1,12 @@
 #+title: ACER NITRO AN515-55 Laptop Arch Linux configuration
 #+author: sebnow91
 
-:TOC:
+* :TOC:
 - [[#introduction][Introduction]]
 - [[#laptops-hardware][Laptop's hardware]]
 - [[#installation-process][Installation process]]
 - [[#basic-packages-and-dotfiles][Basic packages and dotfiles]]
+  - [[#fonts][Fonts]]
   - [[#doom-emacs][DOOM Emacs]]
   - [[#dotfiles][Dotfiles]]
   - [[#getting-device-names-for-config][Getting device names for config]]
@@ -17,6 +18,7 @@
   - [[#grub-theme][GRUB Theme]]
   - [[#dualboot][Dualboot]]
   - [[#set-x11-keyboard-layout][Set X11 keyboard layout]]
+  - [[#hardware-acceleration-and-setting-up-two-graphics-cards][Hardware acceleration and setting up two graphics cards]]
 - [[#doom-emacs-config][DOOM Emacs config]]
 
 * Introduction
@@ -38,7 +40,18 @@ To install Arch Linux you can simply follow DistroTube's Arch Linux Installation
 * Basic packages and dotfiles
 Some basic packages will be downloaded if you follow aforementioned Arch Linux Install Guide and another DT's
 tutorial for installing graphical environment:
-[[https://www.youtube.com/watch?v=pouX5VvX0_Q&t=1139s]]
+[[https://www.youtube.com/watch?v=pouX5VvX0_Q&t=1139s
+]]
+** Fonts
+On my setup I use font packages below. They help to show emojis in firefox or discord, and things like japanese alphabet.
+pacman -S has to be run with *root privileges*.
+#+BEGIN_EXAMPLE
+pacman -S pacman -S noto-fonts-cjk noto-fonts-emoji noto-fonts
+#+END_EXAMPLE
+I also use some font packages from AUR.
+#+BEGIN_EXAMPLE
+yay -S ttf-freefont ttf-ms-fonts ttf-linux-libertine ttf-dejavu ttf-inconsolata ttf-ubuntu-font-family
+#+END_EXAMPLE
 
 ** DOOM Emacs
 *IMPORTANT!* It is recommended to install DOOM Emacs before copying dotfiles below to ~/.config, because there is a path to DOOM Emacs
@@ -189,7 +202,7 @@ https://github.com/Askannz/optimus-manager/wiki/A-guide--to-power-management-opt
 
 *** Runtime D3 status: Disabled by default
 From this guide:
-https://download.nvidia.com/XFree86/Linux-x86_64/435.17/README/dynamicpowermanagement.html
+[[https://download.nvidia.com/XFree86/Linux-x86_64/435.17/README/dynamicpowermanagement.html]]
 In the section *Automated Setup* I followed the 2. point there. I added *options nvidia "NV_regDynamicPowerManagement=0x02"*
 in /etc/modprobe.d/nvidia.conf file (this file had to be created). After rebooting and calling *cat /proc/driver/nvidia/gpus/0000:01:00.0/power*
 that was the result:
