@@ -161,10 +161,10 @@ UUID=*EFI partition UUID*  /mnt    vfat    defaults        0 0
 *ALERT!* You have to mount to the location as you have written in the /etc/fstab file.
 Lastly, you have to make your GRUB config again, same as in *Making boot silent* section.
 
-** Set X11 keyboard layout
+** Set X11 keyboard layout (Swap CapsLock with left Ctrl)
 To set X11 keyboard layout you can use *localectl* to check what is your keyboard layout and then set it with:
 #+BEGIN_EXAMPLE
-localectl set-x11-keymap pl
+localectl set-x11-keymap pl "" "" ctrl:swapcapsS
 #+END_EXAMPLE
 
 ** Hardware acceleration and setting up two graphics cards
