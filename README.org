@@ -17,7 +17,8 @@
   - [[#tlp][TLP]]
   - [[#grub-theme][GRUB Theme]]
   - [[#dualboot][Dualboot]]
-  - [[#set-x11-keyboard-layout][Set X11 keyboard layout]]
+  - [[#set-x11-keyboard-layout-swap-capslock-with-left-ctrl][Set X11 keyboard layout (Swap CapsLock with left Ctrl)]]
+  - [[#set-cursor-theme][Set cursor theme]]
   - [[#hardware-acceleration-and-setting-up-two-graphics-cards][Hardware acceleration and setting up two graphics cards]]
 - [[#doom-emacs-config][DOOM Emacs config]]
 
@@ -166,6 +167,12 @@ To set X11 keyboard layout you can use *localectl* to check what is your keyboar
 #+BEGIN_EXAMPLE
 localectl set-x11-keymap pl "" "" ctrl:swapcapsS
 #+END_EXAMPLE
+
+** Set cursor theme
+https://store.kde.org/p/1269768
+I chose this theme (Dodger Blue variant) because it contrasts nicely with my DOOM Emacs theme (gruvbox).
+You have to follow the installation instructions and then if, you want this for all users,
+you have to change /usr/share/icons/default/index.theme and set the theme to your preffered one.
 
 ** Hardware acceleration and setting up two graphics cards
 To enable hardware acceleration you need to have video drivers installed. For this laptop the needed video drivers are: xf86-video-intel and nvidia.
