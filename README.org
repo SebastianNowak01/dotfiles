@@ -19,6 +19,7 @@
   - [[#dualboot][Dualboot]]
   - [[#set-x11-keyboard-layout-swap-capslock-with-left-ctrl][Set X11 keyboard layout (Swap CapsLock with left Ctrl)]]
   - [[#set-cursor-theme][Set cursor theme]]
+  - [[#time-discrepancy-between-windows-and-gnulinux][Time discrepancy between Windows and GNU\Linux]]
   - [[#hardware-acceleration-and-setting-up-two-graphics-cards][Hardware acceleration and setting up two graphics cards]]
 - [[#doom-emacs-config][DOOM Emacs config]]
 
@@ -174,6 +175,14 @@ I chose this theme (Dodger Blue variant) because it contrasts nicely with my DOO
 You have to follow the installation instructions and then if, you want this for all users,
 you have to change /usr/share/icons/default/index.theme and set the theme to your preffered one.
 
+** Time discrepancy between Windows and GNU\Linux
+There might be a difference in time when using dualboot between operating systems. To fix time on GNU\Linux you
+can type following command:
+#+BEGIN_EXAMPLE
+timedatectl set-ntp true
+#+END_EXAMPLE
+On Windows you can simply follow this guide:
+https://support.microsoft.com/en-us/windows/how-to-set-your-time-and-time-zone-dfaa7122-479f-5b98-2a7b-fa0b6e01b261
 ** Hardware acceleration and setting up two graphics cards
 To enable hardware acceleration you need to have video drivers installed. For this laptop the needed video drivers are: xf86-video-intel and nvidia.
 To enable hardware aceeleration in firefox (my default browser) I followed this guide:
