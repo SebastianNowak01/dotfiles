@@ -61,7 +61,6 @@ alias grep='grep --color=auto'
 alias cp="cp -i"
 alias mv='mv -i'
 alias rm='rm -i'
-alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
 alias brightness='brightnessctl set'
 alias br='brightnessctl set'
 alias ..='cd ..'
@@ -69,7 +68,8 @@ alias ...='cd .. && cd ..'
 alias extendhdmi='xrandr --output HDMI-A-0 --mode 1920x1080 && xrandr --output eDP --left-of HDMI-A-0 && xrandr --output HDMI-A-0 --mode 1920x1080 --rate 144.00 && nitrogen --restore'
 alias prep='rm -f test.results average && cargo build && autotest 2 && cat average'
 alias ghc='ghc -dynamic'
-alias emacs='emacsclient -c -a "emacs"'
+alias dmon='xrandr --output eDP1 --auto --output HDMI-1-0 --auto --right-of eDP1 && nitrogen --restore'
+#alias emacs='emacsclient -c -a "emacs"'
 
 ## CUSTOM FUNCTIONS
 

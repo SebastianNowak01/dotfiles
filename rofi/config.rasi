@@ -139,7 +139,7 @@ combi-hide-mode-prefix: true;
 
 configuration {
 	modi: "window,drun,run,ssh";
-	font: "Open Sans 11";
+	font: "Fira Code Retina 16";
 /*	location: 0;*/
 /*	yoffset: 0;*/
 /*	xoffset: 0;*/

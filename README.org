@@ -207,14 +207,43 @@ if [[ -f /usr/bin/prime-switch ]]; then
 fi
 #+END_SRC
 
+*** Multihead
+For faster troubleshooting I installed optimus-manager-qt package from AUR and included it in the i3 config.
+I use hybrid mode and it works with second monitor.
+
+
 *** User configuration file
 Optimus-manager config file has to be created in /etc/optimus-manager and named as optimus-manager.conf. My whole config for this laptop looks like this:
 #+BEGIN_EXAMPLE
+[intel]
+DRI=3
+accel=sna
+driver=intel
+modeset=yes
+tearfree=yes
+
 [nvidia]
-dynamic_power_management=fine
+DPI=96
+PAT=yes
+allow_external_gpus=no
+dynamic_power_management=coarse
+ignore_abi=no
+modeset=yes
+options=overclocking
+
+[optimus]
+auto_logout=yes
+pci_power_control=no
+pci_remove=no
+pci_reset=no
+startup_auto_battery_mode=hybrid
+startup_auto_extpower_mode=nvidia
+startup_mode=hybrid
+switching=bbswitch
 #+END_EXAMPLE
 It is *Configuration 1* mentioned in this offical optimus-manager guide:
 https://github.com/Askannz/optimus-manager/wiki/A-guide--to-power-management-options
+DISCLAIMER! switching=bbswitch requires bbswitch package available through official repositories.
 
 *** Runtime D3 status: Disabled by default
 From this guide:
