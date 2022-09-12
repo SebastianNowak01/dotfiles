@@ -267,7 +267,7 @@ Power Limits:
 * DOOM Emacs config
 These commands should be pasted into ~/.doom.d/config.el. They help me configure DOOM Emacs to my liking:
 #+BEGIN_SRC elisp
-(beacon-mode 1) ;requires (!package beacon) in ~/.doom.d/packages.el ;enables beacon
+(beacon-mode 1) ;requires (package! beacon) in ~/.doom.d/packages.el ;enables beacon
 (set-face-attribute 'default nil :height 140) ;allows to change font size :height takes argument as pixels/10, so this is 14px font-size
 (define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop) ;with this I do not have to click tab twice to indent text
 #+END_SRC
