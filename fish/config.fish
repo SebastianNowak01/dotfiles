@@ -2,15 +2,9 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-#added DOOM Emacs path for the ease of use (only use this if you use DOOM Emacs, otherwise it can make anything go 'command not found')
-export PATH="$HOME/.emacs.d/bin:$PATH"
-
 #general settings
 set fish_greeting
 #supressess the default fish greeting
-
-#"nvim" as manpager
-#set -x MANPAGER "nvim -c 'set ft=man' -"
 
 # Functions needed for !! and !$
 function __history_previous_command
@@ -50,7 +44,6 @@ function backup --argument filename
 end
 
 ##ALIASES
-alias vim='nvim'
 alias ls='exa -l --color=always --group-directories-first' # my preferred listing
 alias l='ls'
 alias la='exa -a --color=always --group-directories-first'  # all files and dirs
@@ -61,19 +54,15 @@ alias grep='grep --color=auto'
 alias cp="cp -i"
 alias mv='mv -i'
 alias rm='rm -i'
-alias brightness='brightnessctl set'
-alias br='brightnessctl set'
 alias ..='cd ..'
 alias ...='cd .. && cd ..'
-alias extendhdmi='xrandr --output HDMI-A-0 --mode 1920x1080 && xrandr --output eDP --left-of HDMI-A-0 && xrandr --output HDMI-A-0 --mode 1920x1080 --rate 144.00 && nitrogen --restore'
 alias prep='rm -f test.results average && cargo build && autotest 2 && cat average'
 alias ghc='ghc -dynamic'
 alias dmon='xrandr --output eDP1 --auto --output HDMI-1-0 --auto --right-of eDP1 && nitrogen --restore'
-#alias emacs='emacsclient -c -a "emacs"'
 
 ## CUSTOM FUNCTIONS
 
-fish_add_path --path /$HOME/.local/bin/lvim /home/sebas/.cargo/bin
+fish_add_path --path /$HOME/.cargo/bin
 
 # Start X at login
 if status is-interactive

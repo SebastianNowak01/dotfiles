@@ -18,6 +18,7 @@
   - [[#grub-theme][GRUB Theme]]
   - [[#dualboot][Dualboot]]
   - [[#set-x11-keyboard-layout-swap-capslock-with-left-ctrl][Set X11 keyboard layout (Swap CapsLock with left Ctrl)]]
+  - [[#swap-super_l-with-left-ctrl][Swap Super_L with left Ctrl]]
   - [[#set-cursor-theme][Set cursor theme]]
   - [[#time-discrepancy-between-windows-and-gnulinux][Time discrepancy between Windows and GNU\Linux]]
   - [[#hardware-acceleration-and-setting-up-two-graphics-cards][Hardware acceleration and setting up two graphics cards]]
@@ -168,7 +169,16 @@ To set X11 keyboard layout you can use *localectl* to check what is your keyboar
 #+BEGIN_EXAMPLE
 localectl set-x11-keymap pl "" "" ctrl:swapcapsS
 #+END_EXAMPLE
-
+** Swap Super_L with left Ctrl
+With lightDM in ~/.Xmodmap paste the code below (helps with Chromebooks, they do not have CapsLock key).
+#+BEGIN_EXAMPLE
+remove mod4 = Super_L
+remove control = Control_L
+keycode  133 = Control_L NoSymbol Control_L
+keycode  37 = Super_L NoSymbol Super_L
+add mod4 = Super_L
+add control = Control_L
+#+END_EXAMPLE
 ** Set cursor theme
 https://store.kde.org/p/1269768
 I chose this theme (Dodger Blue variant) because it contrasts nicely with my DOOM Emacs theme (gruvbox).
