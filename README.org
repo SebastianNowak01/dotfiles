@@ -7,7 +7,6 @@
 - [[#installation-process][Installation process]]
 - [[#basic-packages-and-dotfiles][Basic packages and dotfiles]]
   - [[#fonts][Fonts]]
-  - [[#doom-emacs][DOOM Emacs]]
   - [[#dotfiles][Dotfiles]]
   - [[#getting-device-names-for-config][Getting device names for config]]
   - [[#packages-needed-for-my-dotfiles-to-work][Packages needed for my dotfiles to work]]
@@ -22,7 +21,7 @@
   - [[#set-cursor-theme][Set cursor theme]]
   - [[#time-discrepancy-between-windows-and-gnulinux][Time discrepancy between Windows and GNU\Linux]]
   - [[#hardware-acceleration-and-setting-up-two-graphics-cards][Hardware acceleration and setting up two graphics cards]]
-- [[#doom-emacs-config][DOOM Emacs config]]
+ - [[#emacs-config][Emacs config]]
 
 * Introduction
 In my dotfiles I implemented this general Arch Linux installation guide in case I have to install it again in the future.
@@ -56,18 +55,6 @@ I also use some font packages from AUR.
 yay -S ttf-freefont ttf-ms-fonts ttf-linux-libertine ttf-dejavu ttf-inconsolata ttf-ubuntu-font-family
 #+END_EXAMPLE
 
-** DOOM Emacs
-*IMPORTANT!* It is recommended to install DOOM Emacs before copying dotfiles below to ~/.config, because there is a path to DOOM Emacs
-that breaks fish if Emacs, and subseqently DOOM Emacs is not installed. To install DOOM Emacs I used DistroTube's tutorial:
-https://www.youtube.com/watch?v=37H7bD-G7nE&t=641s
-You can also enable emacs daemon with systemd:
-#+BEGIN_EXAMPLE
-systemctl enable --user emacs
-systemctl start --user emacs
-#+END_EXAMPLE
-For more info you can visit:
-https://www.emacswiki.org/emacs/EmacsAsDaemon
-
 ** Dotfiles
 My dotfiles can be found here:
 https://gitlab.com/sebnow91/dotfiles
@@ -93,8 +80,6 @@ This is a list of packages from official Arch Linux repository needed for my dot
 
 -mpv (media player)
 
--neovim (vim replacement)
-
 -network-manager-applet (network applet for polybar)
 
 -nitrogen (GUI desktop background server and setter for X Window)
@@ -113,7 +98,7 @@ This is a list of packages from official Arch Linux repository needed for my dot
 
 The command below is written for convenience to download needed packages and must be run with *root privileges*:
 #+BEGIN_EXAMPLE
-pacman -S alacritty brightnessctl exa fish flameshot i3-gaps mpv neovim network-manager-applet nitrogen pacman-contrib picom polybar pulseaudio rofi ttf-font-awesome
+pacman -S alacritty brightnessctl exa fish flameshot i3-gaps mpv network-manager-applet nitrogen pacman-contrib picom polybar pulseaudio rofi ttf-font-awesome
 #+END_EXAMPLE
 
 * Changes not included in dotfiles
@@ -189,7 +174,7 @@ HandlePowerKey=ignore
 
 ** Set cursor theme
 https://store.kde.org/p/1269768
-I chose this theme (Dodger Blue variant) because it contrasts nicely with my DOOM Emacs theme (gruvbox).
+I chose this theme (Dodger Blue variant) because it contrasts nicely with my Emacs theme (gruvbox).
 You have to follow the installation instructions and then if, you want this for all users,
 you have to change /usr/share/icons/default/index.theme and set the theme to your preffered one.
 
@@ -280,12 +265,6 @@ GPU Hardware Support:
 Power Limits:
  Default:                   N/A milliwatts
  GPU Boost:                 N/A milliwatts
-#+END_EXAMPLE
-
-* DOOM Emacs config
-These commands should be pasted into ~/.doom.d/config.el. They help me configure DOOM Emacs to my liking:
-#+BEGIN_SRC elisp
-(beacon-mode 1) ;requires (package! beacon) in ~/.doom.d/packages.el ;enables beacon
-(set-face-attribute 'default nil :height 140) ;allows to change font size :height takes argument as pixels/10, so this is 14px font-size
-(define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop) ;with this I do not have to click tab twice to indent text
-#+END_SRC
+#+END_EXAMPLE*
+* Emacs config
+My Emacs config can be found [[https://gitlab.com/sebnow91/gnu-emacs-config][here]]

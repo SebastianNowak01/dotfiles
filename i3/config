@@ -204,6 +204,7 @@ exec_always --no-startup-id picom --experimental-backends &
 
 #flameshot
 exec_always flameshot&
+bindsym $mod+Shift+s exec "flameshot gui"
 
 #nitrogen restore
 exec --no-startup-id nitrogen --restore
