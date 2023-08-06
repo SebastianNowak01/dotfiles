@@ -13,8 +13,8 @@ font:
   normal:
     family: Fira Code Retina
     style: Regular
-  size: 16
-  use_thin_strokes: false
+  size: 12
+  AppleFontSmoothing: false
 
 
 #######################################

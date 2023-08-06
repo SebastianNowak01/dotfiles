@@ -26,6 +26,7 @@ function __history_previous_command_arguments
   end
 end
 
+
 #The bindings for !! and !$
 if [ $fish_key_bindings = "fish_vi_key_bindings" ];
   bind -Minsert ! __history_previous_command
@@ -57,7 +58,7 @@ alias ..='cd ..'
 alias ...='cd .. && cd ..'
 alias prep='rm -f test.results average && cargo build && autotest 2 && cat average'
 alias ghc='ghc -dynamic'
-alias dmon='xrandr --output eDP1 --auto --output HDMI-1-0 --auto --right-of eDP1 && nitrogen --restore'
+alias dmon='xrandr --output eDP-1 --auto --output HDMI-1 --auto --right-of eDP-1 && nitrogen --restore'
 
 ## CUSTOM FUNCTIONS
 
